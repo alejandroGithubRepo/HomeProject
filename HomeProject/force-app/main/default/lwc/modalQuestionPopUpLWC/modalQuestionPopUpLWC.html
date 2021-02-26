@@ -1,0 +1,33 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 02-26-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   02-25-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    <header class="slds-modal__header slds-modal_large">
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Delete All Products</h2>
+    </header>
+    <template if:true={haveData}>
+        <lightning-datatable hide-checkbox-column data={lineItemList} columns={columns} key-field="Id">
+        </lightning-datatable>
+    </template>
+    <template if:false={haveData}>
+        <div class="slds-modal__content slds-p-around_large slds-modal_large" id="modalContent">
+            <lightning-icon  class="slds-float_left" icon-name="utility:cases" size="small">
+            </lightning-icon>
+            <b class="slds-float_left slds-p-left_xx-small"> There are currently no Products related to this Opportunity. </b>
+        </div>
+    </template>
+    <footer class="slds-modal__footer slds-modal_large">
+        <template if:true={haveData}>
+            <b class="slds-float_left"> Are you sure you want to remove all these Products? </b>
+            <button class="slds-button slds-button_brand" onclick={deleteRecords}>Delete</button>
+        </template>
+        <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+    </footer>
+</template>
